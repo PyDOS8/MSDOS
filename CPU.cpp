@@ -1,57 +1,57 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <functional>
 using namespace std;
 class CPU{
     public:
-   /*		Registers		*/
-   map<int, double>RDI;
-   map <char, string>RCS;
-   map <double, float> RFD;
 
-   /*		Memory			*/
-   map <double, float> DFMemory;
-   map <char, string> CSMemory;
-   map <int, double> DIMemory;
+  /*		Registers		*/
+  map<int, double>RID;
+  map<string, char>RCS;
+  map<string*, char*>RPCS;
+  map<int*, double*>RPID; 
+ string strMemory[1] = {}
+  void add(){
+	if(RID[0] > 0 && RID[1] > 0){
+		RID[0] = RID[0]+RID[1];
+	}
+  } 
+  void sub(){
+	if(RID[0] > 0 && RID[1] > 0){
+		RID[0] = RID[0]-RID[1];
+	}
+  }
+  void mul(){
+	if(RID[0] > 0 && RID[1] > 0){
+		RID[0] = RID[0]*RID[1];
+	}
+  }
+  void div(){
+	if(RID[0] > 0 && RID[1] > 0){
+		RID[0] = RID[0] / RID[1];
+	}
+  }
+  void addToStrMemory(string val){
+	 if (strMemory.empty()){
+		strMemory[0] = val;
+	 }else{
+		strMemory.empty();
+	 }
+  }
 
-   /*		Math Functions  */
-   void add(double num1, double num2){
-		double sum = num1+num2;
-		RFD[1] = sum;
-   }
-   void sub(double num1, double num2){
-	   double sum = num1-num2;
-	   RFD[1] = sum;
-   }
-   void mul(double num1, double num2){
-	    double sum = num1 * num2;
-	    RFD[1] = sum;
-   }
-   void div(double num1, double num2){
-	   double sum = num1 / num2;
-	   RFD[1] = sum;
-   }
-
-   /* Memory */
-   void storeString(string msg){
-	  RCS[1] = msg;
-   }
-   void storeChar(char chr){
-	   RCS[0] = chr;
-   }
-   void storeCharIntoMemory(){
-	   CSMemory[0] = RCS[0];
-   }
-   void storeStringIntoMemory(){
-	   CSMemory[1] = RCS[1];
-   }
-   void storeIntIntoMemory(){
-	   DIMemory[0] = RDI[0];
-   }
-   void storeDoubleIntoMemory(){
-	   DIMemory[1] = RDI[1];
-   }
-   void storeFloatIntoMemory(){
-	   DFMemory[1] = RFD[1];
-   }
-};
+  void deallocatePRIDInt(){
+	RPID.clear();
+  }
+  void deallocatePRIDDouble(){
+	RPID.clear();
+  }
+  
+  void deallocateRPCSString(){
+	RPCS.clear();
+  }
+  
+  void deallocateRPCSSChar(){
+	RPCS.clear();
+  }
+}
